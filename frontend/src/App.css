@@ -1,0 +1,316 @@
+/* =============================
+   Google Fonts
+============================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* =============================
+   Global Styles
+============================= */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f8fa;
+  color: #222;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =============================
+   Header
+============================= */
+/* HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-glass {
+  background: rgb(17, 17, 17); /* slightly transparent black */
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 6px 30px rgba(44, 43, 43, 0.882),  /* stronger outer shadow */
+    inset 0 -3px 12px rgba(0, 0, 0, 0.3); /* deeper inner shadow */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 20px 0;  /* taller header */
+  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.header-glass nav a {
+  color: #bbb8b8ff; /* bright light gray for contrast */
+  transition: color 0.3s ease;
+}
+
+
+
+
+.header-glass:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* 🔥 Fix layout + alignment */
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between; /* logo left, nav right */
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #abaaaa;
+}
+
+.logo span {
+  margin-left: 4px;
+}
+
+
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Cool underline effect */
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #0b5fff;
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: #0b5fff;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Slight change on scroll */
+.header.scrolled .header-glass {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+/* =============================
+   Hero Section
+============================= */
+.hero {
+  background: linear-gradient(rgba(11,95,255,0.6), rgba(11,95,255,0.6)),
+              url('https://images.unsplash.com/photo-1618898906300-79cfd47d9c09?auto=format&fit=crop&w=1600&q=80')
+              center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background: #ff7b00;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: #ff941a;
+}
+
+/* =============================
+   About Section
+============================= */
+.about {
+  padding: 80px 20px;
+  background: white;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* =============================
+   Services Section
+============================= */
+.services {
+  padding: 80px 20px;
+  background: #f2f4f8;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.services .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+
+
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; /* keeps aspect ratio, crops if necessary */
+}
+
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card .card-img {
+  width: 100%;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card .card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.card .icon {
+  color: #0b5fff;
+  margin: 10px 0;
+}
+
+.card h3 {
+  margin: 10px 0 5px;
+}
+
+.card p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* =============================
+   Contact Section
+============================= */
+.contact {
+  padding: 80px 20px;
+  background: white;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* =============================
+   Footer
+============================= */
+.footer {
+  background: #0b5fff;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+/* =============================
+   Responsive
+============================= */
+@media (max-width: 768px) {
+  .header .container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
