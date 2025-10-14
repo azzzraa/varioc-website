@@ -1,46 +1,72 @@
-.contact-container {
-  max-width: 600px;
-  margin: 80px auto;
-  padding: 2rem;
-  background-color: #f8f9fa;
-  border-radius: 12px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.contact-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1212129e 100%);
+  color: #f5f5f5;
+  text-align: center;
 }
 
-.contact-container h1 {
-  text-align: center;
-  color: #007bff;
-  margin-bottom: 2rem;
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.contact-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #6b6760;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-.contact-form button {
-  width: 100%;
-  padding: 0.8rem;
-  background-color: #007bff;
-  color: white;
+  padding: 14px 16px;
+  margin-bottom: 1.2rem;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f5f5f5;
   font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s;
+  resize: none;
+  transition: background 0.2s ease;
 }
 
-.contact-form button:hover {
-  background-color: #0056b3;
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.contact-btn {
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(90deg, #3812b5, #ffb347);
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #ff941a, #ffc36e);
 }
 
 .thank-you {
-  text-align: center;
   font-size: 1.2rem;
-  color: #333;
+  color: #9fff9f;
+  background: rgba(0, 80, 0, 0.3);
+  padding: 1rem;
+  border-radius: 12px;
+  display: inline-block;
+  margin-top: 1rem;
 }

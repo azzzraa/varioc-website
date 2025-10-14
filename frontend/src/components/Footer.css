@@ -1,0 +1,86 @@
+/* Footer styling to match dark-metallic theme of website */
+.footer {
+  background-color: #090909; /* dark background */
+  color: #ccc; /* grayish text for contrast */
+  padding: 40px 0 20px 0;
+  font-family: "Arial", sans-serif;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+.footer-container {
+  display: flex;
+  justify-content: space-around; /* space between columns */
+  flex-wrap: wrap;
+  padding: 2rem;
+  background-color: #111;
+  color: #fff;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+  margin: 10px;
+  text-align: center; /* CENTER all text inside this column */
+}
+
+.footer-column h3 {
+  margin-bottom: 0.8rem;
+}
+
+.footer-column p {
+  .footer p {
+  margin: 6px 0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* CENTER text + icon horizontally */
+}
+
+}
+
+
+.footer-contact,
+.footer-hours,
+.footer-social {
+  flex: 1 1 250px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  align-items: center;    /* center horizontally */
+}
+
+
+
+
+.footer h3 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.footer p {
+  margin: 6px 0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.footer p svg {
+  margin-right: 8px;
+  stroke: #ff7b00; /* Orange icon color for welding effect */
+}
+
+
+
+
+/* COPYRIGHT BOTTOM */
+.footer-bottom {
+  text-align: center; /* make sure it's centered */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 13px;
+  color: #888;
+}

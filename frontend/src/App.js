@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Home as HomeIcon, Info, Settings, Mail, Hammer, Wrench, ShieldCheck } from "lucide-react";
+import { Home as HomeIcon, Info, Settings, Mail, Hammer, Wrench, ShieldCheck, Contact as ContactIcon, ClipboardList } from "lucide-react";
 import "./App.css";
-
-// Import components
+import Services from "./components/Services";
+import   Contact from "./components/Contact";
 import Home from "./components/Home";
+import FAQ from "./components/FAQ";
+import Footer from "./components/Footer";
+
+
 
 // Services images
 import V1 from "./assets/V1.jpg";
@@ -51,6 +55,8 @@ function App() {
               <a href="#about"><Info size={18} /> O nas</a>
               <a href="#services"><Settings size={18} /> Storitve</a>
               <a href="#contact"><Mail size={18} /> Kontakt</a>
+              <a href="#faq"><ClipboardList size={18} /> FAQ</a>
+              
             </nav>
           </div>
         </motion.div>
@@ -77,59 +83,16 @@ function App() {
         </motion.div>
       </section>
 
-      {/* SERVICES */}
-      <section id="services" className="services">
-        <div className="container">
-          <h2>Storitve</h2>
-          <div className="grid">
-            {services.map((service, i) => (
-              <motion.div
-                key={i}
-                className="card"
-                whileHover={{ scale: 1.03 }}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <img src={service.img} alt={service.title} />
-                <div className="card-content">
-                  <div className="icon">{service.icon}</div>
-                  <h3>{service.title}</h3>
-                  <p>{service.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Services />
 
-      {/* CONTACT */}
-      <section id="contact" className="contact">
-        <div className="container">
-          <h2>Kontakt</h2>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Form submission test — backend next!");
-            }}
-          >
-            <input type="text" placeholder="Ime in priimek" required />
-            <input type="email" placeholder="E-pošta" required />
-            <textarea placeholder="Vaše sporočilo" required></textarea>
-            <button type="submit" className="btn">Pošlji</button>
-          </form>
-        </div>
-      </section>
+      <FAQ />
 
-      {/* FOOTER */}
-      <footer className="footer">
-        <div className="container">
-          <p>© {new Date().getFullYear()} Varioc Welding | Vse pravice pridržane</p>
-        </div>
-      </footer>
+    
+    <Contact/>
+ 
+
+<Footer/>
     </div>
   );
 }
-
 export default App;
