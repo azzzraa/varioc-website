@@ -1,24 +1,24 @@
 import express from "express";
 import cors from "cors";
 import sequelize from "./db.js";
-import Faq from "./faqModel.js"; // import our new model
+import Faq from "./faqModel.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ TEST route
+// Test route
 app.get("/", (req, res) => {
   res.send("Backend running successfully!");
 });
 
-// ✅ Contact endpoint (already exists or to be added later)
+// Contact endpoint
 app.post("/contact", (req, res) => {
   console.log("Contact form received:", req.body);
   res.json({ success: true });
 });
 
-// ✅ Get all FAQs
+// Get all FAQs
 app.get("/faqs", async (req, res) => {
   try {
     const faqs = await Faq.findAll();
@@ -29,7 +29,7 @@ app.get("/faqs", async (req, res) => {
   }
 });
 
-// ✅ Add new FAQ (for testing or later admin use)
+// Add new FAQ
 app.post("/faqs", async (req, res) => {
   try {
     const { question, answer } = req.body;
@@ -41,7 +41,7 @@ app.post("/faqs", async (req, res) => {
   }
 });
 
-// ✅ Sync and start server
+// Start server
 sequelize
   .sync()
   .then(() => {

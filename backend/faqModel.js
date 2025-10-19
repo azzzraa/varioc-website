@@ -1,8 +1,8 @@
-// faqModel.js
+// backend/faqModel.js
 import { DataTypes } from "sequelize";
 import sequelize from "./db.js";
 
-// Define a simple FAQ model
+// Sequelize model for FAQs
 const Faq = sequelize.define("Faq", {
   question: {
     type: DataTypes.STRING,
