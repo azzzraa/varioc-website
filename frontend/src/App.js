@@ -1,23 +1,17 @@
 import React, { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Home as HomeIcon, Info, Settings, Mail, Hammer, Wrench, ShieldCheck, Contact as ContactIcon, ClipboardList } from "lucide-react";
+import { Home as HomeIcon, Info, Settings, Mail, Hammer, ClipboardList } from "lucide-react";
 import "./App.css";
-import Services from "./components/Services";
-import   Contact from "./components/Contact";
 import Home from "./components/Home";
+import Services from "./components/Services";
+import Contact from "./components/Contact";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
-
-
-
-// Services images
-import V1 from "./assets/V1.jpg";
-import V2 from "./assets/V2.jpg";
-import V3 from "./assets/V3.jpg";
-import V4 from "./assets/V4.jpg";
+import Login from "./components/Login";
+import AdminMessages from "./components/AdminMessages";
 
 function App() {
-  // Scroll effect for header (optional)
   useEffect(() => {
     const header = document.querySelector(".header");
     const onScroll = () => {
@@ -28,71 +22,82 @@ function App() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const services = [
-    { img: V1, title: "TIG/MIG Varjenje", desc: "Precizno varjenje kovinskih delov z modernimi tehnikami za popolne spoje.", icon: <Hammer size={32}/> },
-    { img: V2, title: "Kovinske Konstrukcije", desc: "Izdelava kakovostnih konstrukcij za industrijske in zasebne objekte.", icon: <Wrench size={32}/> },
-    { img: V3, title: "Popravila in Predelave", desc: "Obnova, ojačitev in predelava poškodovanih kovinskih elementov.", icon: <ShieldCheck size={32}/> },
-    { img: V4, title: "Mobilne Storitve", desc: "Varjenje in popravila na terenu z lastno opremo.", icon: <Hammer size={32}/> },
-  ];
-
   return (
-    <div className="app">
-      {/* HEADER */}
-      <header className="header">
-        <motion.div
-          className="header-glass"
-          initial={{ y: -60, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="container header-inner">
-            <div className="logo">
-              <Hammer size={24} color="#bbb8b8ff" style={{ marginRight: '8px' }} />
-              <span style={{ color: '#bbb8b8ff', fontWeight: 'bold' }}>Sean Varilec</span>
+    <Router>
+      <Routes>
+
+        {/* PUBLIC MAIN WEBSITE */}
+        <Route
+          path="/"
+          element={
+            <div className="app">
+
+              {/* HEADER */}
+              <header className="header">
+                <motion.div
+                  className="header-glass"
+                  initial={{ y: -60, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <div className="container header-inner">
+                    <div className="logo">
+                      <Hammer size={24} color="#bbb8b8ff" style={{ marginRight: '8px' }} />
+                      <span style={{ color: '#bbb8b8ff', fontWeight: 'bold' }}>Sean Varilec</span>
+                    </div>
+                    <nav>
+                      <a href="#home"><HomeIcon size={18} /> Domov</a>
+                      <a href="#about"><Info size={18} /> O nas</a>
+                      <a href="#services"><Settings size={18} /> Storitve</a>
+                      <a href="#contact"><Mail size={18} /> Kontakt</a>
+                      <a href="#faq"><ClipboardList size={18} /> FAQ</a>
+                      {/* TEMPORARY ADMIN ACCESS LINK (CAN REMOVE LATER) */}
+                      <a href="/admin" style={{ color: "red" }}>Admin</a>
+                    </nav>
+                  </div>
+                </motion.div>
+              </header>
+
+              <Home />
+
+              <section id="about" className="about">
+                <motion.div
+                  className="container"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1 }}
+                >
+                  <h2>O nas</h2>
+                  <p>
+                    Samostojni podjetnik, specializiran za kovinske konstrukcije,
+                    popravila in izdelavo po meri. S strokovnim pristopom zagotavljamo
+                    kakovostne rešitve, ki trajajo.
+                  </p>
+                </motion.div>
+              </section>
+
+              <Services />
+              <FAQ />
+              <Contact />
+              <Footer />
             </div>
-            <nav>
-              <a href="#home"><HomeIcon size={18} /> Domov</a>
-              <a href="#about"><Info size={18} /> O nas</a>
-              <a href="#services"><Settings size={18} /> Storitve</a>
-              <a href="#contact"><Mail size={18} /> Kontakt</a>
-              <a href="#faq"><ClipboardList size={18} /> FAQ</a>
-              
-            </nav>
-          </div>
-        </motion.div>
-      </header>
+          }
+        />
 
-      {/* HERO / HOME SECTION */}
-      <Home />
-
-      {/* ABOUT */}
-      <section id="about" className="about">
-        <motion.div
-          className="container"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <h2>O nas</h2>
-          <p>
-            Varioc je samostojni podjetnik, specializiran za kovinske konstrukcije,
-            popravila in izdelavo po meri. S strokovnim pristopom zagotavljamo
-            kakovostne rešitve, ki trajajo.
-          </p>
-        </motion.div>
-      </section>
-
-      <Services />
-
-      <FAQ />
-
-    
-    <Contact/>
- 
-
-<Footer/>
-    </div>
+        {/* SEPARATE ADMIN PAGE */}
+        <Route path="/login" element={<Login />} />
+  <Route
+    path="/admin"
+    element={
+      localStorage.getItem("isAdmin") === "true"
+        ? <AdminMessages />
+        : <Login />
+    }
+    />
+      </Routes>
+    </Router>
   );
 }
+
 export default App;
