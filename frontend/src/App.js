@@ -10,17 +10,23 @@ import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import AdminMessages from "./components/AdminMessages";
+import LatestNews from "./components/LatestNews";
+import AdminNews from "./components/AdminNews";
+
 
 function App() {
-  useEffect(() => {
-    const header = document.querySelector(".header");
-    const onScroll = () => {
-      if (window.scrollY > 50) header.classList.add("scrolled");
-      else header.classList.remove("scrolled");
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+useEffect(() => {
+  const header = document.querySelector(".header");
+  if (!header) return; 
+  const onScroll = () => {
+    if (window.scrollY > 50) header.classList.add("scrolled");
+    else header.classList.remove("scrolled");
+  };
+
+  window.addEventListener("scroll", onScroll);
+  return () => window.removeEventListener("scroll", onScroll);
+}, []);
+
 
   return (
     <Router>
@@ -52,7 +58,11 @@ function App() {
                       <a href="#contact"><Mail size={18} /> Kontakt</a>
                       <a href="#faq"><ClipboardList size={18} /> FAQ</a>
                       {/* TEMPORARY ADMIN ACCESS LINK (CAN REMOVE LATER) */}
-                      <a href="/admin" style={{ color: "red" }}>Admin</a>
+              
+                      {localStorage.getItem("isAdmin") === "true" && (
+  <a href="/admin" style={{ color: "red" }}>Admin</a>
+)}
+
                     </nav>
                   </div>
                 </motion.div>
@@ -80,6 +90,7 @@ function App() {
               <Services />
               <FAQ />
               <Contact />
+              <LatestNews />
               <Footer />
             </div>
           }
@@ -95,6 +106,15 @@ function App() {
         : <Login />
     }
     />
+<Route
+  path="/admin/news"
+  element={
+    localStorage.getItem("isAdmin") === "true"
+      ? <AdminNews />
+      : <Login />
+  }
+/>
+
       </Routes>
     </Router>
   );

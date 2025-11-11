@@ -1,0 +1,38 @@
+.news-section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.news-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.news-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.news-card {
+  background: #2b2b2b;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.news-card h3 {
+  margin: 0 0 10px 0;
+}
+
+.news-card a {
+  color: #00cc66;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.news-card a:hover {
+  text-decoration: underline;
+}
