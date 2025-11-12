@@ -1,38 +1,118 @@
 .news-section {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: auto;
+  padding: 60px 20px;
+  background-color: #f7f4f4;
+  color: white;
+  text-align: center;
 }
 
 .news-section h2 {
-  text-align: center;
-  margin-bottom: 30px;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .news-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  justify-items: center;
 }
 
 .news-card {
-  background: #2b2b2b;
-  color: white;
-  padding: 20px;
+  position: relative;
+  width: 100%;
+  height: 220px;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 🔥 Random welding image backgrounds */
+.news-card:nth-child(1) {
+  background-image: url("https://images.unsplash.com/photo-1581092334696-1b1a6f2d6e8b?auto=format&fit=crop&w=800&q=80");
+}
+.news-card:nth-child(2) {
+  background-image: url("https://images.unsplash.com/photo-1602491453631-e2a5ad90a6b8?auto=format&fit=crop&w=800&q=80");
+}
+.news-card:nth-child(3) {
+  background-image: url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80");
+}
+.news-card:nth-child(4) {
+  background-image: url("https://images.unsplash.com/photo-1602464198657-7e3d815a41e7?auto=format&fit=crop&w=800&q=80");
+}
+
+/* Overlay effect */
+.news-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+.news-card h3,
+.news-card p,
+.news-card a {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  text-align: left;
+  padding: 0 15px;
 }
 
 .news-card h3 {
-  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 130px;
+}
+
+.news-card p {
+  font-size: 0.9rem;
+  color: #ccc;
 }
 
 .news-card a {
-  color: #00cc66;
-  text-decoration: none;
+  display: inline-block;
+  margin-top: 8px;
+  background: #0a0a0af6;
+  color: #f1e8e8e6;
   font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
 }
 
 .news-card a:hover {
-  text-decoration: underline;
+  background: #363637db;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgb(244, 239, 239);
+}
+
+.news-section h2 {
+  font-size: 2rem; /* bigger */
+  text-align: center;
+  margin-bottom: 20px;
+  color: #363434b4; /* match the red admin? */
+  position: relative;
+  display: inline-block;
+  padding: 5px 15px;
+}
+
+.news-section h2::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 4px;
+  background: #ff3b3b;
+  margin: 8px auto 0;
+  border-radius: 2px;
 }

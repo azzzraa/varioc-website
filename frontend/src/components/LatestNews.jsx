@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./LatestNews.css"; 
+import "./LatestNews.css";
+
+import welding1 from "../assets/welding1.jpg";
+import welding2 from "../assets/welding2.jpg";
+import welding3 from "../assets/welding3.jpg";
+import welding4 from "../assets/welding4.jpg";
+
+const images = [welding1, welding2, welding3, welding4];
 
 function LatestNews() {
   const [news, setNews] = useState([]);
@@ -25,8 +32,12 @@ function LatestNews() {
     <section className="news-section">
       <h2>📰 Zadnje novice</h2>
       <div className="news-cards">
-        {news.map(item => (
-          <div key={item.id} className="news-card">
+        {news.map((item, idx) => (
+          <div
+            key={item.id}
+            className="news-card"
+            style={{ backgroundImage: `url(${images[idx % images.length]})` }}
+          >
             <h3>{item.title}</h3>
             <p>{new Date(item.date).toLocaleDateString()}</p>
             {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Preberi več →</a>}
